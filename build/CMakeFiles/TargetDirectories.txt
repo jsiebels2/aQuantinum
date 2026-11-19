@@ -1,0 +1,2 @@
+/home/gideon/repos/aQuantinum/build/CMakeFiles/edit_cache.dir
+/home/gideon/repos/aQuantinum/build/CMakeFiles/rebuild_cache.dir
