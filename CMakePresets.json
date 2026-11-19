@@ -1,0 +1,51 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
+
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+    {
+      "name": "container-release",
+      "displayName": "Container: Release",
+      "inherits": "base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "container-debug",
+      "displayName": "Container: Debug",
+      "inherits": "base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "native-release",
+      "displayName": "Native (WSL / Mac / Pi): Release",
+      "inherits": "base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "native-debug",
+      "displayName": "Native (WSL / Mac / Pi): Debug",
+      "inherits": "base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    }
+  ],
+
+  "buildPresets": [
+    { "name": "container-release", "configurePreset": "container-release" },
+    { "name": "container-debug",   "configurePreset": "container-debug" },
+    { "name": "native-release",    "configurePreset": "native-release" },
+    { "name": "native-debug",      "configurePreset": "native-debug" }
+  ],
+
+  "testPresets": [
+    { "name": "container-release", "configurePreset": "container-release", "output": { "outputOnFailure": true } },
+    { "name": "container-debug",   "configurePreset": "container-debug",   "output": { "outputOnFailure": true } },
+    { "name": "native-release",    "configurePreset": "native-release",    "output": { "outputOnFailure": true } },
+    { "name": "native-debug",      "configurePreset": "native-debug",      "output": { "outputOnFailure": true } }
+  ]
+}
